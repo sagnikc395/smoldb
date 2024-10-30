@@ -5,20 +5,20 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/sagnikc395/smoldb/errors"
+	"github.com/sagnikc395/smoldb/exitcodes"
 )
 
 type InputBuffer struct {
-	buffer        []byte
-	buffer_length int
-	input_length  int
+	Buffer       []byte
+	BufferLength int
+	InputLength  int
 }
 
 func NewInputBuffer() *InputBuffer {
 	return &InputBuffer{
-		buffer:        make([]byte, 0),
-		buffer_length: 0,
-		input_length:  0,
+		Buffer:       make([]byte, 0),
+		BufferLength: 0,
+		InputLength:  0,
 	}
 }
 
@@ -30,9 +30,9 @@ func (ib *InputBuffer) ReadInput() {
 
 	if len(bytes_read) <= 0 {
 		fmt.Fprintln(os.Stderr, "Error reading input")
-		os.Exit(errors.EXIT_FAILURE)
+		os.Exit(exitcodes.EXIT_FAILURE)
 	}
 
-	ib.input_length = len(bytes_read) - 1
-	ib.buffer[len(bytes_read[:])-1] = 0
+	ib.InputLength = len(bytes_read) - 1
+	ib.Buffer[len(bytes_read[:])-1] = 0
 }

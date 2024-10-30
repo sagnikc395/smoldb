@@ -2,6 +2,6 @@ package repl
 
 import "fmt"
 
-func print_prompt() {
+func PrintPrompt() {
 	fmt.Printf("smoldb > ")
 }
